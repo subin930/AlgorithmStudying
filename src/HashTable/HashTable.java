@@ -3,18 +3,10 @@ package HashTable;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-class Node {
-    int key;
-    String value;
 
-    public Node(int key, String value) {
-        this.key = key;
-        this.value = value;
-    }
-}
 public class HashTable {
-    private LinkedList<Node>[] arr;
-    private int size;
+    public LinkedList<Node>[] arr;
+    public int size;
 
     public HashTable(int size) {
         this.size = size;
