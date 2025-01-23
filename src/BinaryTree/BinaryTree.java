@@ -35,6 +35,18 @@ public class BinaryTree {
         this.rightTree = rightTree;
     }
 
+    public BinaryTree removeLeftSubTree() {
+        BinaryTree deleteingNode = this.leftTree;
+        this.setLeftSubTree(null);
+        return deleteingNode;
+    }
+
+    public BinaryTree removeRightSubTree() {
+        BinaryTree deleteingNode = this.rightTree;
+        this.setRightSubTree(null);
+        return deleteingNode;
+    }
+
     public void preOrderTraversal(BinaryTree tree) {
         if (tree == null) return;
         System.out.printf("%d ", tree.data);
