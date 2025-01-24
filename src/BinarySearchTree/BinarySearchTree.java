@@ -68,7 +68,7 @@ public class BinarySearchTree {
             if (parentNode.getLeftSubTree() == currentNode) parentNode.setLeftSubTree(child);
             else parentNode.setRightSubTree(child);
         } else {
-            // 3 처리
+            // 3 처리: 왼쪽 subtree 중에서 가장 큰 것 선택
             BinaryTree replacingParent = currentNode;
             BinaryTree replacingNode = currentNode.getLeftSubTree();
 
@@ -77,12 +77,22 @@ public class BinarySearchTree {
                 replacingNode = replacingNode.getRightSubTree();
             }
 
+            //대체할 노드와 대체할 노드의 부모 간의 연결 끊기 + 대체할 노드의 왼쪽 자식 노드와 부모 노드를 연결
+            replacingParent.setRightSubTree(replacingNode.getLeftSubTree());
+            if(parentNode.getLeftSubTree() == currentNode) parentNode.setLeftSubTree(replacingNode);
+            else parentNode.setRightSubTree(replacingNode);
+
+            replacingNode.setLeftSubTree(currentNode.getLeftSubTree());
+            replacingNode.setRightSubTree(currentNode.getRightSubTree());
+
+            /*
             if (replacingParent != currentNode) replacingParent.setRightSubTree(replacingNode.getLeftSubTree());
             replacingNode.setLeftSubTree(currentNode.getLeftSubTree());
             replacingNode.setRightSubTree(currentNode.getRightSubTree());
 
             if (parentNode.getLeftSubTree() == currentNode) parentNode.setLeftSubTree(replacingNode);
             else parentNode.setRightSubTree(replacingNode);
+             */
         }
 
         if (fakeParent.getRightSubTree() != rootNode) rootNode = fakeParent.getRightSubTree();
